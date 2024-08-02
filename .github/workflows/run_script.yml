@@ -31,8 +31,8 @@ jobs:
       env:
         CLIENT_ID: ${{ secrets.CLIENT_ID }}
         SECRET_KEY: ${{ secrets.SECRET_KEY }}
-        REDDIT_PASSWORD: ${{ secrets.PASSWORD }}
-        REDDIT_USERNAME: ${{ secrets.USERNAME }}
+        PASSWORD: ${{ secrets.PASSWORD }}
+        USERNAME: ${{ secrets.USERNAME }}
 
     - name: Commit and push if there are changes
       run: |
