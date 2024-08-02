@@ -1,7 +1,7 @@
 # Load in depdencies
 import pandas as pd
 import requests
-import os
+import os 
 
 # Read credentials from environment variables
 client_id = os.getenv('CLIENT_ID')
@@ -83,7 +83,7 @@ def process_posts(json_data):
             'pull_date': pull_date  # Add the pull_date to the data
         })
 
-    # Convert the list of dictionaries to a DataFrame
+    # Convert the list of dictionaries to a DataFrame #
     return pd.DataFrame(posts_data)
 
 btc_reddit_new = process_posts(res_bitcoin.json())
