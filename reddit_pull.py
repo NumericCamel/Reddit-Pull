@@ -5,10 +5,10 @@ import requests
 import os
 
 # Read credentials from environment variables
-client_id = os.environ.get('CLIENT_ID')
-client_secret = os.environ.get('SECRET_KEY')
-username = os.environ.get('USERNAME')
-password = os.environ.get('PASSWORD')
+client_id = os.getenv('CLIENT_ID')
+client_secret = os.getenv('SECRET_KEY')
+username = os.getenv('USERNAME')
+password = os.getenv('PASSWORD')
 
 ## Load in historic data
 btc_r = pd.read_csv('Data/BTC_R.csv')
@@ -16,9 +16,9 @@ eth_r = pd.read_csv('Data/ETH_R.csv')
 sol_r = pd.read_csv('Data/SOL_R.csv')
 
 # Convert to date
-btc_r.date_posted = pd.to_datetime(btc_r.date_posted)
-eth_r.date_posted = pd.to_datetime(eth_r.date_posted)
-sol_r.date_posted = pd.to_datetime(sol_r.date_posted)
+btc_r.date_posted = pd.to_datetime(btc_r.date_posted, format='%m/%d/%y')
+eth_r.date_posted = pd.to_datetime(eth_r.date_posted, format='%m/%d/%y')
+sol_r.date_posted = pd.to_datetime(sol_r.date_posted, format='%m/%d/%y')
 
 
 print(btc_r)
