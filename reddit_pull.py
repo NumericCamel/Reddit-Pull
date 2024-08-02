@@ -1,7 +1,7 @@
 # Load in depdencies
 import pandas as pd
 import requests
-import datetime
+from datetime import datetime
 import os 
 
 # Read credentials from environment variables
