@@ -1,6 +1,7 @@
 # Load in depdencies
 import pandas as pd
 import requests
+import datetime
 import os 
 
 # Read credentials from environment variables
@@ -64,10 +65,10 @@ def process_posts(json_data):
     # Loop through each post in the JSON data
     for post in json_data['data']['children']:
         # Convert the Unix timestamp to a datetime object
-        created_date = datetime.fromtimestamp(post['data']['created_utc']).strftime('%m/%d/%Y')
+        created_date = datetime.fromtimestamp(post['data']['created_utc']).strftime('%m/%d/%y')
 
         # Get the current system date
-        pull_date = datetime.now().strftime('%m/%d/%Y')
+        pull_date = datetime.now().strftime('%m/%d/%y')
 
         # Append the data as a dictionary to the list
         posts_data.append({
