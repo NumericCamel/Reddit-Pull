@@ -2,6 +2,13 @@
 import pandas as pd
 import requests
 from datetime import datetime, timezone
+import os
+
+# Read credentials from environment variables
+client_id = os.environ.get('CLIENT_ID')
+client_secret = os.environ.get('SECRET_KEY')
+username = os.environ.get('USERNAME')
+password = os.environ.get('PASSWORD')
 
 ## Load in historic data
 btc_r = pd.read_csv('Data/BTC_R.csv')
@@ -19,14 +26,15 @@ print(eth_r)
 print(sol_r)
 
 # API Authentication
-CLIENT_ID = '8MAahEPJBSixOfm-fQ8yPw'
-SECRET_KEY = 'e3hY0q_c-i1ZCxn8yF-m-iBC3_tc-w'
+CLIENT_ID = client_id
+SECRET_KEY = client_secret 
+
 
 auth = requests.auth.HTTPBasicAuth(CLIENT_ID, SECRET_KEY)
 data = {
     'grant_type': 'password',
-    'username': 'CamelQuant',
-    'password': 'GoatedMillion619!'
+    'username': username,
+    'password': password
 }
 
 headers = {'User-Agent': 'SolanaAPI/0.1'}
