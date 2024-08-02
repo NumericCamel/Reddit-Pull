@@ -14,10 +14,20 @@ password = os.getenv('PASSWORD')
 if not all([client_id, client_secret, username, password]):
     raise ValueError("Some of the required environment variables are missing.")
 
+
+# Get the current date to append to the backup filenames
+current_date = datetime.now().strftime('%Y-%m-%d')
+
 ## Load in historic data
 btc_r = pd.read_csv('Data/BTC_R.csv')
 eth_r = pd.read_csv('Data/ETH_R.csv')
 sol_r = pd.read_csv('Data/SOL_R.csv')
+
+# Save backups
+btc_r.to_csv(f'Data/Backup/BTC_R_{current_date}.csv', index=False)
+eth_r.to_csv(f'Data/Backup/ETH_R_{current_date}.csv', index=False)
+sol_r.to_csv(f'Data/Backup/SOL_R_{current_date}.csv', index=False)
+
 
 # Convert to date
 btc_r.date_posted = pd.to_datetime(btc_r.date_posted, format='%m/%d/%y')
@@ -103,6 +113,6 @@ def clean_df(df):
 
 btc, eth, sol = clean_df(btc), clean_df(eth), clean_df(sol)
 
-btc.to_csv('Data API Reddit/Master Data/BTC_R.csv', index=False)
-eth.to_csv('Data API Reddit/Master Data/ETH_R.csv', index=False)
-sol.to_csv('Data API Reddit/Master Data/SOL_R.csv', index=False)
+btc.to_csv('Data/BTC_R.csv', index=False)
+eth.to_csv('Data/ETH_R.csv', index=False)
+sol.to_csv('Data/SOL_R.csv', index=False)
