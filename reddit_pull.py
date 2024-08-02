@@ -1,7 +1,6 @@
 # Load in depdencies
 import pandas as pd
 import requests
-#from datetime import datetime, timezone
 import os
 
 # Read credentials from environment variables
@@ -9,6 +8,10 @@ client_id = os.getenv('CLIENT_ID')
 client_secret = os.getenv('SECRET_KEY')
 username = os.getenv('USERNAME')
 password = os.getenv('PASSWORD')
+
+# Check if all environment variables are set
+if not all([client_id, client_secret, username, password]):
+    raise ValueError("Some of the required environment variables are missing.")
 
 ## Load in historic data
 btc_r = pd.read_csv('Data/BTC_R.csv')
