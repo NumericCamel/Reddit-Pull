@@ -30,9 +30,9 @@ sol_r.to_csv(f'Data/Backup/SOL_R_{current_date}.csv', index=False)
 
 
 # Convert to date
-btc_r.date_posted = pd.to_datetime(btc_r.date_posted, format='%m/%d/%y')
-eth_r.date_posted = pd.to_datetime(eth_r.date_posted, format='%m/%d/%y')
-sol_r.date_posted = pd.to_datetime(sol_r.date_posted, format='%m/%d/%y')
+btc_r.date_posted = pd.to_datetime(btc_r.date_posted, format='mixed', dayfirst=False)
+eth_r.date_posted = pd.to_datetime(eth_r.date_posted, format='mixed', dayfirst=False)
+sol_r.date_posted = pd.to_datetime(sol_r.date_posted, format='mixed', dayfirst=False)
 
 
 print(btc_r)
